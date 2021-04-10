@@ -12,14 +12,14 @@ export default class AddForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     this.setState({ error: null })
-    const { name } = ev.target
+    const { symbol } = ev.target
 
-    ApiService.postData({
-      name: name.value,
+    ApiService.follow({
+      symbol: symbol.value,
     })
       .then(res => {
-        name.value = ''
-        this.props.onAddSuccess()
+        symbol.value = ''
+        this.props.onAddSuccess(symbol)
       })
       .catch(res => {
         this.setState({ error: res.error })
@@ -36,19 +36,19 @@ export default class AddForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <div className='name'>
-          <label htmlFor='AddForm__name'>
-            Name <Required />
+        <div className='symbol'>
+          <label htmlFor='AddForm__symbol'>
+            Symbol <Required />
           </label>
           <Input
-            name='name'
+            name='symbol'
             type='text'
             required
-            id='AddForm__name'>
+            id='AddForm__symbol'>
           </Input>
         </div>
         <Button type='submit'>
-          Add
+          Add Company
         </Button>
       </form>
     )

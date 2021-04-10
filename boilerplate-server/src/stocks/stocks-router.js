@@ -38,6 +38,7 @@ stocksRouter
     newData.modified = modified;
     newData.user_id = req.user.id
 
+    console.log(JSON.stringify(newData));
     StocksService.insert(
       req.app.get('db'),
       newData

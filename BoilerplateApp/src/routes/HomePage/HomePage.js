@@ -28,22 +28,12 @@ export default class HomePage extends Component {
     }));
   }
 
-  handleAddSuccess = symbol => {
-    ApiService.getCompanyData(symbol)
-          .then(this.context.addCompany)
-          .catch(this.context.setError)
-    const { history } = this.props
-    history.push('/home')
-  }
-
-
   render() {
     return (
       <main>
         {/* <Graph
         /> */}
         <StockList
-          onAddSuccess={this.handleAddSuccess}
         />
         {/* <NewsFeed
         /> */}

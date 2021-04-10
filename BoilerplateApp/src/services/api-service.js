@@ -3,7 +3,9 @@ import config from '../config'
 
 const ApiService = {
   getCompanyData(symbol) {
-    return fetch(`${config.COMPANY_DATA_API_ENDPOINT}/query?function=OVERVIEW&symbol=${symbol}&apikey=${config.COMPANY_DATA_API_KEY}`, {
+    const url = `${config.COMPANY_DATA_API_ENDPOINT}/query?function=OVERVIEW&symbol=${symbol}&apikey=${config.COMPANY_DATA_API_KEY}`;
+    console.log(url);
+    return fetch(url, {
       headers: {
       },
     })

@@ -9,9 +9,10 @@ export default class StockItem extends Component {
 
   render() {
     const company = this.props.company;
+    console.log(company);
     return (
         <Link
-        to='/add'
+        to={'/company/' + company.symbol}
         type='button'
         className='stock-list-button'
         >

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AddForm from '../../components/AddForm/AddForm'
+import ApiService from '../../services/api-service';
 import { Section } from '../../components/Utils/Utils'
 import './AddPage.css'
 
@@ -10,15 +11,18 @@ export default class AddPage extends Component {
     },
   }
 
-  handleAddSuccess = user => {
+  handleAddSuccess = symbol => {
+    ApiService.getCompanyData(symbol)
+          .then(this.context.addCompany)
+          .catch(this.context.setError)
     const { history } = this.props
-    history.push('/')
+    history.push('/home')
   }
 
   render() {
     return (
       <Section className='AddPage'>
-        <h2>Add Item</h2>
+        <h2>Follow Stock</h2>
         <AddForm
           onAddSuccess={this.handleAddSuccess}
         />
