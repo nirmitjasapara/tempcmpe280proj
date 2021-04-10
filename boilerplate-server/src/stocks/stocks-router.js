@@ -9,7 +9,7 @@ const jsonParser = express.json()
 
 const serialize = stocks => ({
   id: stocks.id,
-  symbol: xss(stocks.name),
+  symbol: xss(stocks.symbol),
   modified: stocks.modified,
   user_id: stocks.user_id
 })
