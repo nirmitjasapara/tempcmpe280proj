@@ -12,7 +12,7 @@ export default class StockItem extends Component {
     console.log(company);
     return (
         <Link
-        to={'/company/' + company.symbol}
+        to={'/company/' + company["Symbol"]}
         type='button'
         className='stock-list-button'
         >

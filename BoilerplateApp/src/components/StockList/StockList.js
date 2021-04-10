@@ -21,7 +21,7 @@ export default class StockList extends Component {
 
   render() {
     return (
-      <section>
+      <section className='stock-list'>
         {this.renderList()}
         <Link
             to='/add'

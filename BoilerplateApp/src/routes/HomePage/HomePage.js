@@ -21,6 +21,7 @@ export default class HomePage extends Component {
   }
 
   populateCompanyList = companies => {
+    this.context.clearCompanies();
     Promise.all(companies.map (c => {
         return ApiService.getCompanyData(c.symbol)
             .then(this.context.addCompany)
@@ -30,7 +31,7 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <main>
+      <main className='home-page-main'>
         {/* <Graph
         /> */}
         <StockList
