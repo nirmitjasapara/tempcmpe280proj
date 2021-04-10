@@ -19,7 +19,6 @@ const stocksService = {
         .from('stocks')
         .select('*')
         .where('user_id', user_id)
-        .first()
     },
   
     delete(knex, id, user_id) {

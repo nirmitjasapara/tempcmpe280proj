@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 
 const CustomContext = React.createContext({
-  data: [],
+  followings: [],
+  companies: [],
   error: null,
   setError: () => {},
   clearError: () => { },
-  setData: () => {},
-  clearData: () => {}
+  setFollowings: () => {},
+  clearFollowings: () => {},
+  addCompany: () => {},
+  clearCompanies: () => {}
 })
 
 export default CustomContext
 
 export class CustomProvider extends Component {
   state = {
-    data: [],
+    followings: [],
+    companies: [],
     error: null
   };
 
@@ -25,20 +29,30 @@ export class CustomProvider extends Component {
   clearError = () => {
     this.setState({ error: null })
   }
-  setData = data => {
-    this.setState({ data })
+  setFollowings = followings => {
+    this.setState({ followings });
+    return followings;
   }
-  clearData = () => {
-    this.setState({ data: [] })
+  clearFollowings = () => {
+    this.setState({ followings: [] })
+  }
+  addCompany = company => {
+    this.setState({ companies: [...this.state.companies, company] })
+  }
+  clearCompanies = () => {
+    this.setState({ companies: [] })
   }
   render() {
     const value = {
-      data: this.state.data,
-      setData: this.setData,
-      clearData: this.clearError,
+      followings: this.state.followings,
+      companies: this.state.companies,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
+      setFollowings: this.setFollowings,
+      clearFollowings: this.clearFollowings,
+      addCompany: this.addCompany,
+      clearCompanies: this.clearCompanies
     }
     return (
       <CustomContext.Provider value={value}>
